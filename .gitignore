@@ -1,0 +1,15 @@
+# 로컬 전용: `_`로 시작하는 폴더 (_docs 기획·구조 문서, _artifacts 검수 캡처)
+_*/
+
+# 에이전트 작업 규칙·진입점 (로컬 전용)
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+
+# 빌드·의존성
+node_modules/
+dist/
+
+# OS·편집기
+.DS_Store
+.claude/settings.local.json

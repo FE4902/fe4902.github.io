@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!-- arcade-prerender: canonical·OG·Twitter 카드·JSON-LD -->
+<title>FE4902 | Portfolio</title>
+<meta name="description" content="서커스 찰리·남극탐험·크롬 공룡을 1인칭 도트 3D로 달리는 개발자 포트폴리오. 스크롤로 클리어하면 이세계로 전송됩니다.">
+<link rel="preload" href="/node_modules/@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="waiting">
+<div class="hud px"><div>1P-<b id="score">000000</b> <span>HI-020000</span> <span id="stage-number">STAGE-01</span></div><div class="hud-sub">REST-<b id="distance">1200</b>km <span>FLAGS <b id="flags">0</b>/3</span> <span class="speed">SPEED <i id="speedbar">▮▮▮▮▮▮▮▮</i></span></div></div>
+<section id="intro" class="intro" aria-label="포트폴리오 타이틀">
+  <div class="title-card"><p class="px title-kicker">FE4902</p><h1 id="theme-title" class="px">PORTFOLIO</h1><div class="title-penguin" aria-hidden="true"></div><button id="start" class="px start" disabled>LOADING…</button><p id="intro-help" class="intro-help" role="status" hidden></p><p class="px title-foot" id="title-foot">1 PLAYER · STAGE 01</p></div>
+</section>
+<section id="ready" class="ready px" aria-live="polite" hidden>PLAYER 1<br><span id="ready-stage">STAGE-01</span><strong>READY!</strong></section>
+<div class="scroll px blink">SCROLL ↓</div>
+
+<div class="clear px" id="clear" aria-hidden="true">GAME CLEAR<small>SCORE <span id="clearScore">000000</span></small></div>
+
+<main class="ride"></main>
+<!-- 클리어 뒤 이세계로 넘어가는 시스템 창 (문구는 enterPortal 이 채움) -->
+<dialog class="system-window" id="system" aria-labelledby="system-question"><p class="system-label"><b></b></p><div class="system-screen"><ul class="system-log"></ul><h2 id="system-question" class="system-line" style="--i:1" aria-live="polite"></h2><div class="system-choices system-line" style="--i:2"><button data-choice="yes">수락</button><button data-choice="no">거절</button></div></div></dialog>
+<!-- 전송이 끝난 도착 화면: 디지털 공간 위에 떠다니는 연락처 + 상태창(내용은 PROFILE) -->
+<!-- 빈 #orbs·#profile-body·#projects-body 는 빌드 때 content.js 로 채움 (vite.config.js arcade-prerender, 내용은 src/status.js) -->
+<section class="ending" id="ending" aria-label="전송 완료"><nav class="orbs" id="orbs" aria-label="메뉴"></nav></section>
+<!-- PROFILE · PROJECTS 아이템을 누르면 뜨는 창 (내용은 PROFILE) -->
+<dialog class="system-window info-window" id="profile-window" aria-labelledby="profile-label"><p class="system-label" id="profile-label"><b>상태창</b></p><button class="window-close" aria-label="닫기">✕</button><div class="status-body" id="profile-body"></div></dialog>
+<dialog class="system-window info-window narrow" id="projects-window" aria-labelledby="projects-label"><p class="system-label" id="projects-label"><b>인벤토리</b></p><button class="window-close" aria-label="닫기">✕</button><div class="status-body" id="projects-body"></div></dialog>
+
+<div id="sound-controls" class="sound-controls" role="group" aria-label="게임 사운드">
+  <button id="sound-toggle" class="sound-toggle" type="button" aria-label="게임 소리" aria-pressed="true" ><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3V5h1V4h1V3h2v10H7v-1H6v-1H5v-1H2z"/><path class="sound-on" d="M11 5h1v1h1v4h-1v1h-1V9h1V7h-1zM13 3h1v1h1v2h1v4h-1v2h-1v1h-1v-2h1V5h-1z"/><path class="sound-off" d="M11 6h1v1h1V6h1v1h-1v2h1v1h-1V9h-1v1h-1V9h1V7h-1z"/></svg><span class="sound-state" aria-hidden="true">ON</span></button>
+  <label class="sound-volume"><span class="volume-meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><input id="sound-volume" type="range" min="0" max="100" step="5" value="55" aria-label="배경음악과 효과음 볼륨" aria-valuetext="55%"></label>
+  <output id="sound-level" for="sound-volume" aria-hidden="true">55</output>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
